@@ -1,5 +1,4 @@
 import request, json, urllib3
-from youtube import API 
 
 HEADER = {
     "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",

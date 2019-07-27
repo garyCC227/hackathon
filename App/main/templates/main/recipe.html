@@ -39,87 +39,34 @@
     </div>
 </header>
 <!--end of the event title-->
+    <div class="w3-container">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Launch demo modal
+        </button>
+    </div>
 
-<!-- event content -->
-<div class="w3-row w3-content w3-display-container" style="margin-top:20px;max-width:1100px">
-    <!-- left description -->
-    <div class="w3-col" style="width:40%;">
-        <!-- description here -->
-        <div class="w3-row w3-white" style="max-height:auto">
-            <div class="w3-container w3-center" style="margin-top:40px" >
-                <h1 class="w3-opacitsy-min w3-text-red"><b>Description</b></h1>
-                <h3 class="text-muted w3-large w3-opacity-min" style="word-wrap:break-word;margin-bottom:70px;">dasklhdkjflaksdfhkhiwqonk</h3>
+    <!-- Modal -->
+    <div class="modal fade bd-example-modal-xl" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{ diagram | safe }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
             </div>
         </div>
-        <!-- end description -->
-        <hr>
-        <!-- tags : loop all tags here-->
-        <div class="w3-row" style="height:200px">
-   
-            <h1 class="colors w3-large w3-button text-white w3-border-0 w3-round-xxlarge w3-hover-opacity" style="width:auto;margin-top:5px"><b>hello</b></h1>
-       
-        </div>
-        <!-- end tags -->
-        <script type="text/javascript">
-
-            ran_col()
-            function ran_col(){
-                var ran_class = [" w3-blue", " w3-red", " w3-orange", " w3-green", " w3-yellow"];
-                var class_ = ran_class[0];
-                tags = document.getElementsByClassName('colors')
-                for(var i=0;i<tags.length;i++){
-                    tags[i].className += ran_class[Math.floor(Math.random() * ran_class.length)]
-                }
-            }
-        </script>
     </div>
-    <!-- end left description -->
-
-    <!-- right info -->
-    <div class="w3-col" style="margin-left:20px;width:40%;">
-
-        <hr>
-        <!-- end map -->
-
-    <!-- event info -->
-    <div class="w3-row w3-white" style="height:700px">
-        <div class="w3-display-container  text-monospace w3-xxlarge" style="margin:30px;font-family:Arial">
-
-            <!-- content start here -->
-            <!-- address -->
-            <div class="w3-row w3-center w3-text-pink" style="margin-top:20px;padding:20px">
-                <i class="fa fa-map-marker"></i>  <b class="w3-opacity-min">where</b><br>
-                <h1 class="w3-xlarge w3-text-blue w3-opacity w3-margin-top w3-margin-bottom" style="font-family:Arial;">dasdas</h1>
-            </div>
-            <hr>
-
-            <!-- dates-->
-            <div class="w3-row w3-center w3-text-pink" style="margin-top:20px;padding:20px">
-                <i class="fa fa-calendar"></i>  <b class="w3-opacity-min">When</b><br>
-                <h1 class="w3-large text-dark w3-opacity w3-margin-top w3-margin-bottom" style="font-family:Arial;"> das</h1> <h1 class="w3-large text-dark w3-opacity w3-margin-top w3-margin-bottom">to</h1>
-                <h1 class="w3-large text-dark w3-opacity w3-margin-top w3-margin-bottom" style="font-family:Arial;">dasdas</h1>
-            </div>
-            <hr>
-
-            <!-- officialWebsite -->
-            <div class="w3-row w3-center w3-text-pink" style="margin-top:20px;padding:20px">
-                <i class="fa fa-mobile-phone"></i>  <b class="w3-opacity-min w3-xlarge">More info</b><br>
-
-                <a href="#" class="w3-row w3-large w3-text-blue w3-margin-topw3-hover-opacity" style="text-decoration:underline">website<i class=" w3-medium glyphicon glyphicon-chevron-right"></i> </a>
-                <a href="#" class="w3-row w3-large w3-text-blue w3-margin-bottom w3-hover-opacity"><b class="text-dark w3-opacity">Email:</b> <i style="text-decoration:underline;font-family:Arial;">dsadsa@,com</i><i class=" w3-medium glyphicon glyphicon-chevron-right"></i> </a>
-            </div>
-            <hr>
-
-            <!-- content end here -->
-
-        </div>
-    </div>
-    <!-- end event info -->
-
-    </div>
-    <!-- end right info -->
-
-</div>
 
 </div>
 

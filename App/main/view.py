@@ -26,19 +26,21 @@ def test():
 	return render_template('main/test.html')
 
 
-
 @main_blueprint.route('/detail_recipe', methods=['POST','GET'])
 def detail_recipe():
 	if request.method == 'POST':
 		recipe_name = request.form.get('recipe_name')
 		recipe_id = request.form.get('recipe_id')
-
 		ids = f.get_video_id(recipe_name)
-		# print(ids)
+
 		urls = []
 		for id in ids:
 			urls.append("https://www.youtube.com/embed/"+id["youTubeId"])
-		return render_template('main/recipe.html', links = urls)
+		
+		# detail 
+		html = f.visualize_nutrition(recipe_id)
+		
+		return render_template('main/recipe.html', links = urls, diagram=html)
 	
 	return render_template('main/result.html', datas=data)
 
