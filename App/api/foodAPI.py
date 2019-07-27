@@ -40,11 +40,12 @@ class Food:
             'GET',
             "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/videos/search",
             fields={'query': query,
-                    'number': number
+                    'number': number,
                     },
             headers=HEADER,
         ).data.decode('utf-8'))
-        return r["videos"][0]["youTubeId"]
+        print(r)
+        return r["videos"]
     
     """ abstarct method of getting information by id 
     """

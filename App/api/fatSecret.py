@@ -79,12 +79,12 @@
 
 
 
-#     print("\n\n ------ User OAuth Example ------ \n\n")
-
 #     # print(fs.get_authorize_url())
 #     # session_token = fs.authenticate(input("\nPIN: "))
 
 #     # foods = fs.foods_get_most_eaten()
+
+#     print("\n\n ------ User OAuth Example ------ \n\n")
 #     # print("Most Eaten Food Results: {}".format(len(foods)))
 
 #     # recipes = fs.recipes_search("Enchiladas")
