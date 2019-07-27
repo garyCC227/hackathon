@@ -1,67 +1,175 @@
 {% extends 'base.html' %} {% block title %} <title>Login</title> {% endblock %}
 {% block content %}
+  
     <!-- !PAGE CONTENT! -->
-    <div class="w3-main w3-content" style="margin-left:300px; margin-top:100px;">
+    <div class="w3-main w3-content w3-display-container" style="margin-left:500px; margin-top:50px;">
       <!-- Push down content on small screens -->
-
+      <header class="w3-display-container" style="margin-left:450px;">
+        <i class="fas fa-adjust w3-xxxlarge"></i>
+      </header>
       <!-- About section -->
       <div
-        class="w3-container w3-card w3-padding-32 ml-5"
+        class="w3-container w3-card w3-padding-32 ml-5 w3-white"
         id="about"
+        style="margin-top: 50px"
       >
         <h4><b>Fill up a Form</b></h4>
-        <form action="{{ url_for('main.submit_survey')}}" method="post" >
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="inputEmail4">Name</label>
-              <input type="text" name="name" class="form-control" id="inputEmail4" placeholder="Email">
-            </div>
-            <div class="form-group col-md-6">
-              <label for="inputPassword4">Age</label>
-              <input type="number" name="age" class="form-control" id="inputPassword4" placeholder="Password">
-            </div>
-          </div>
-          <div class="form-row">
+        <div class="w3-row">
+          <form action="{{ url_for('main.submit_survey')}}" method="post" >
+            <div class="form-row">
               <div class="form-group col-md-6">
-                <label for="inputCity">Weight</label>
-                <input type="number" name="weight" class="form-control" id="inputCity">
+                <label for="inputEmail4">Name</label>
+                <input type="text" name="name" class="form-control" id="inputEmail4" placeholder="Email">
               </div>
               <div class="form-group col-md-6">
-                <label for="inputState">Gender</label>
-                <select id="inputState" name="gender" class="form-control">
+                <label for="inputPassword4">Age</label>
+                <input type="number" name="age" class="form-control" id="inputPassword4" placeholder="Password">
+              </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputCity">Weight</label>
+                  <input type="number" name="weight" class="form-control" id="inputCity">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputState">Gender</label>
+                  <select id="inputState" name="gender" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                  </select>
+                </div>
+              </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputCity">Height</label>
+                <input type="number" name="height" class="form-control" id="inputCity">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputState">Diet Style</label>
+                <select id="inputState" name="diet" class="form-control">
                   <option selected>Choose...</option>
-                  <option>Male</option>
-                  <option>Female</option>
+                  <option>Vegetarian</option>
+                  <option>Vegan</option>
+                  <option>Gluten Free</option>
+                  <option>Dairy Free</option>
+                  <option>Very Healthy</option>
+                  <option>Cheap</option>
+                  <option>Very Popular</option>
+                  <option>Sustainable</option>
                 </select>
               </div>
             </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="inputCity">Height</label>
-              <input type="number" name="height" class="form-control" id="inputCity">
-            </div>
-            <div class="form-group col-md-6">
-              <label for="inputState">Diet Style</label>
-              <select id="inputState" name="diet" class="form-control">
-                <option selected>Choose...</option>
-                <option>Vegetarian</option>
-                <option>Vegan</option>
-                <option>Gluten Free</option>
-                <option>Dairy Free</option>
-                <option>Very Healthy</option>
-                <option>Cheap</option>
-                <option>Very Popular</option>
-                <option>Sustainable</option>
-              </select>
-            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form> 
+        </div>
+        
+        <hr class="w3-content w3-row" style="margin-bottom: 20px">
+        <h4 class="w3-center">Upload Image</h4>
+        <br>
+        <div class="w3-row w3-display-container" style="margin-top: 200px">
+    
+          <div class="w3-row w3-container">
+            <form id="upload" class="w3-display-bottommiddle" method="post" action="{{ url_for('main.send_files') }}"
+              enctype="multipart/form-data" style="
+                            width: 500px;
+                            height: 200px;
+                            border: 4px dashed #010103;">
+              <div class="file-field">
+                <input onchange="onChange(this)" id="image" type="file" name="file" style="position: absolute;
+                                margin: 0;
+                                padding: 0;
+                              width: 100%;
+                              height: 100%;
+                              outline: none;
+                              opacity: 0;" />
+                <p id="description" style="margin-top: 80px" class="ml-5 mr-5 w3-center "><b class="w3-grey w3-text-white w3-large w3-round-large" style="padding:10px;font-family: sans-serif">
+                  Drag your files here or click in this area.</b>
+                </p>
+              </div>
+            </form>
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>              
+          <!-- end of form -->
       </div>
+      <div class="w3-row w3-container">
+          <div class="w3-container" style="margin-left:280px;z-index:10; margin-top:20px">
+            <button  class="btn btn-danger" type="submit" form="upload" value="submit">
+              Upload Files
+            </button>
+          
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+              show you image
+            </button>
+          </div>
+      </div>
+      </div>
+      
+      
+  </div>
+
+      
+	  </div>
+
+  <!--event title-->
+<header class="w3-content w3-display-container w3-center w3-border-bottom w3-white" style="margin-top:70px;max-width:1500px;height:600px">
+
+</header>
+<!--end of the event title-->
   
-	</div>
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+        <div class="modal-header">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+      <div class="modal-content" style="height:500px" width="400px"
+      height="400px" >
+        <img
+          id="blah"
+          class="w3-display-middle"
+          src="#"
+          alt="your image"
+          style="display: none;"
+          width="400px"
+          height="400px"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- end of drop box -->
 </div>
 
+</div>
+<script>
+  function onChange(evt) {
+    var str = evt.files;
+    console.log(str);
+    var p = document.getElementById("description");
+    p.textContent = str[0].name;
 
+    if (str && str[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        $("#blah").attr("src", e.target.result);
+        $("#blah").css("display", "block");
+      };
+
+      reader.readAsDataURL(str[0]);
+    }
+  }
+</script>
 
 {% endblock %}
