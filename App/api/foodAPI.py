@@ -179,8 +179,5 @@ if __name__ == '__main__':
     "glutenFree":true
     "dairyFree":true
     "veryHealthy":false
-    "cheap":false
-    "veryPopular":false
-    "sustainable":false
     '''
 

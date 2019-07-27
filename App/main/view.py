@@ -4,14 +4,15 @@ import os
 from App.api.foodAPI import Food
 from App.implement import *
 
-import backend.google_vision
-import backend.analyze
-import backend.classification
+from backend.google_vision import getJson
+from backend.analyze import toDataFrame
+from backend.classification import Classifier
 import sys
 import numpy as np
 
 f = Food()
 data = f.generate_recipe_card()
+model = Classifier()
 
 main_blueprint = Blueprint(
     'main',
@@ -60,13 +61,38 @@ def submit_survey():
 		input = request.form
 		# user input
 		name = input.get('name')
-		age = input.get('age')
-		weight = input.get('weight')
+		age = int(input.get('age'))
+		weight = int(input.get('weight'))
 		gender = input.get('gender')
 		diet = input.get('diet')
-		height = input.get('height')
+		height = int(input.get('height'))
 
-		print(name, age, weight, gender, diet, height)
+		# calculate the target calories
+		BMI = weight/((height/100)**2)
+		BMR = 66+(13.7*weight)+(5*height) - (6.8*age) + BMI * 5 # daily caloriesS
+
+		# model classifier
+		json_labels = getJson(os.path.join(UPLOAD_FOLDER+'/', filename))
+		selected_labels = toDataFrame(json_labels)
+		# print(selected_labels)
+		labels = []
+		for key, value in selected_labels.items():
+			labels.append(value)
+		labels = np.array(labels)
+		# print(labels)
+		category = model.predict(labels)
+
+		if category == "fat":
+			BMR *= 0.8
+			diet += ", veryhealthy, lowfat, highprotein, lowcarbonhydrate"
+		elif category == "slim":
+			BMR *= 1.2
+			diet += ", highprotein"
+
+		z = f.generate_meal(BMR, diet)
+		print(z)
+
+		# print(name, age, weight, gender, diet, height)
 		
 	return render_template('main/temp.html')
 
