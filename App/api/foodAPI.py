@@ -66,7 +66,7 @@ class Food:
         
     """Get recipe description 
         :recipeID: recipeID: int
-        :type return: dict{videos: }  
+        :type return: dict{: }  
     """
     def summarize_recipe(self, recipeID):
         return self.get_url("{}/summary".format(recipeID))
@@ -106,15 +106,28 @@ class Food:
     def get_nutrition(self, recipeID):
         return self.get_url("{}/nutritionWidget.json".format(recipeID))
         
+    '''
+    def get_recipe_img(self, recipeID):
+        r = json.loads(self.http_.request(
+            'GET',
+            "https://spoonacular.com/recipeImages/" + url,
+            headers=HEADER
+        ).data.decode('utf-8'))
+        '''
     # get recepe instruction() with get recepe vedeio()
-
-
+    def generate_recipe_card(self):
+        result = f.generate_meal()["meals"]
+        for recipe in result:
+            recipe["description"] = f.summarize_recipe(recipe["id"])["summary"]
+        return result
+    
 if __name__ == '__main__':
     Api = "56d77e19b7mshca1482175a5bf43p15b63djsn0ca1fbbea757"
     f = Food(Api)
-    # result = f.generate_meal()
-    zzz = f.get_nutrition(1003464)
-    video = f.get_video()
+    zzz = f.generate_recipe_card()
+    # zzz = f.summarize_recipe(1003464)
+    #video = f.get_video()
+
 
 '''
 "vegetarian":false
