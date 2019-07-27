@@ -27,8 +27,25 @@ def detail_recipe():
 def index():
     return render_template('main/main.html')
 
+# for survey form
 @main_blueprint.route('/temp')
 def temp():
+	return render_template('main/temp.html')
+
+@main_blueprint.route('/submit_survey', methods=['POST','GET'])
+def submit_survey():
+	if request.method == 'POST':
+		input = request.form
+		# user input
+		name = input.get('name')
+		age = input.get('age')
+		weight = input.get('weight')
+		gender = input.get('gender')
+		diet = input.get('diet')
+		height = input.get('height')
+
+		print(name, age, weight, gender, diet, height)
+		
 	return render_template('main/temp.html')
 
 @main_blueprint.route('/upload', methods=["POST"])

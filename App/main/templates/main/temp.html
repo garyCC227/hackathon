@@ -3,64 +3,57 @@
     <!-- !PAGE CONTENT! -->
     <div class="w3-main w3-content" style="margin-left:300px; margin-top:100px;">
       <!-- Push down content on small screens -->
-      <div class="w3-hide-large" style="margin-top:83px"></div>
-
-      <!-- Modal for full size images on click-->
-      <div
-        id="modal01"
-        class="w3-modal w3-black"
-        style="padding-top:0"
-        onclick="this.style.display='none'"
-      >
-        <span class="w3-button w3-black w3-xlarge w3-display-topright">×</span>
-        <div
-          class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64"
-        >
-          <img id="img01" class="w3-image" />
-          <p id="caption"></p>
-        </div>
-      </div>
 
       <!-- About section -->
       <div
-        class="w3-container w3-dark-grey w3-center w3-text-light-grey w3-padding-32 ml-5"
+        class="w3-container w3-card w3-padding-32 ml-5"
         id="about"
       >
         <h4><b>Fill up a Form</b></h4>
-        <form>
+        <form action="{{ url_for('main.submit_survey')}}" method="post" >
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="inputEmail4">Email</label>
-              <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+              <label for="inputEmail4">Name</label>
+              <input type="text" name="name" class="form-control" id="inputEmail4" placeholder="Email">
             </div>
             <div class="form-group col-md-6">
-              <label for="inputPassword4">Password</label>
-              <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+              <label for="inputPassword4">Age</label>
+              <input type="number" name="age" class="form-control" id="inputPassword4" placeholder="Password">
             </div>
-          </div>
-          <div class="form-group">
-            <label for="inputAddress">Address</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-          </div>
-          <div class="form-group">
-            <label for="inputAddress2">Address 2</label>
-            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
           </div>
           <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="inputCity">City</label>
-              <input type="text" class="form-control" id="inputCity">
+              <div class="form-group col-md-6">
+                <label for="inputCity">Weight</label>
+                <input type="number" name="weight" class="form-control" id="inputCity">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputState">Gender</label>
+                <select id="inputState" name="gender" class="form-control">
+                  <option selected>Choose...</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                </select>
+              </div>
             </div>
-            <div class="form-group col-md-4">
-              <label for="inputState">State</label>
-              <select id="inputState" class="form-control">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputCity">Height</label>
+              <input type="number" name="height" class="form-control" id="inputCity">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputState">Diet Style</label>
+              <select id="inputState" name="diet" class="form-control">
                 <option selected>Choose...</option>
-                <option>...</option>
+                <option>Vegetarian</option>
+                <option>Vegan</option>
+                <option>Gluten Free</option>
+                <option>Dairy Free</option>
+                <option>Very Healthy</option>
+                <option>Cheap</option>
+                <option>Very Popular</option>
+                <option>Sustainable</option>
+
               </select>
-            </div>
-            <div class="form-group col-md-2">
-              <label for="inputZip">Zip</label>
-              <input type="text" class="form-control" id="inputZip">
             </div>
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
@@ -90,12 +83,7 @@
   
 	</div>
 </div>
-<!-- end events -->
-      <!-- End page content -->
-    </div>
 
-  </body>
-</html>
 
 
 {% endblock %}

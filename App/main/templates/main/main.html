@@ -1,22 +1,26 @@
 {% extends 'base.html' %} {% block title %} <title>Login</title> {% endblock %}
 {% block content %}
 
-<div class="w3-display-container"></div>
-  <!-- Push down content on small screens -->
-  <div class="w3-hide-large" style="margin-top:100px"></div>
-  <!-- image drop box -->
-  <style>
-    form {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 500px;
-      height: 200px;
-      border: 4px dashed #010103;
-    }
-  </style>
-  <div class="container w3-container">
+<div
+  class="w3-content"
+  style="margin-top:20px;margin-left:300px;max-width:1400px;height:500px"
+>
+
+  <!--event title-->
+<header class="w3-content w3-display-container w3-center w3-border-bottom w3-white" style="margin-top:70px;max-width:1500px;height:600px">
+
+  <div class="w3-col" style="width:50%">
+    <div class="container w3-container">
     <div class="w3-row">
+        <style>
+            form {
+              position: absolute;
+              top: 50%;
+              width: 500px;
+              height: 200px;
+              border: 4px dashed #010103;
+            }
+          </style>
       <form
         id="upload"
         class="w3-display-middle"
@@ -44,28 +48,37 @@
         </div>
       </form>
     </div>
-    <div class="w3-row ml-5" style="margin-top:61%;">
-      <div class="w3-container" style="margin-left:280px;z-index:10">
-        <button
-          class="btn btn-danger"
-          type="submit"
-          form="upload"
-          value="submit"
-        >
-          Upload Files
-        </button>
-
-        <button
-          type="button"
-          class="btn btn-primary"
-          data-toggle="modal"
-          data-target="#exampleModal"
-        >
-          show you image
-        </button>
+    
+  <div class="w3-col w3-display-container" style="width:40%">
+      <div class="w3-center w3-content" style=" margin-top:200px">
+          <div class="w3-row ml-5" style="margin-top:61%;">
+              <div class="w3-container" style="margin-left:280px;z-index:10">
+                <button
+                  class="btn btn-danger"
+                  type="submit"
+                  form="upload"
+                  value="submit"
+                >
+                  Upload Files
+                </button>
+        
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-toggle="modal"
+                  data-target="#exampleModal"
+                >
+                  show you image
+                </button>
+              </div>
+            </div>  
+        <br><br><br><br>
+         
       </div>
-    </div>
   </div>
+</header>
+<!--end of the event title-->
+  
 
   <!-- Modal -->
   <div
