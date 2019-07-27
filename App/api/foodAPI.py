@@ -1,4 +1,5 @@
 import request, json, urllib3
+from youtube import API 
 
 HEADER = {
     "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
@@ -44,7 +45,7 @@ class Food:
                     },
             headers=HEADER,
         ).data.decode('utf-8'))
-        print(r)
+
         return r["videos"]
     
     """ abstarct method of getting information by id 
@@ -116,15 +117,30 @@ class Food:
             recipe["image"] = "https://spoonacular.com/recipeImages/{}-300x150.jpg".format(id)
             
         return result
+
+    def visualize_nutrition(self, recipeID):
+        r = self.http_.request(
+            'GET',
+            "https://api.spoonacular.com/recipes/{}/ingredientWidget".format(recipeID),
+            fields={'defaultCss': "true",
+                    },
+            headers={
+                "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+                "X-RapidAPI-Key": "56d77e19b7mshca1482175a5bf43p15b63djsn0ca1fbbea757",
+                "Accept": "text/html"
+            }
+        ).data.decode('utf-8')
+
+        return r
     
 if __name__ == '__main__':
     Api = "56d77e19b7mshca1482175a5bf43p15b63djsn0ca1fbbea757"
     f = Food(Api)
-    
-    result = f.get_video_id("beef")
+    # result = f.get_video_id("Breakfast Porridge")
     # add descriptoin and change image 
     #result = f.generate_recipe_card()
-    # zzz = f.summarize_recipe(1003464)
+    zzz = f.visualize_nutrition(636588)
+    # print(zzz)
     #video = f.get_video()
 
 

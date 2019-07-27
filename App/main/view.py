@@ -32,6 +32,7 @@ def detail_recipe():
 	if request.method == 'POST':
 		recipe_name = request.form.get('recipe_name')
 		recipe_id = request.form.get('recipe_id')
+
 		ids = f.get_video_id(recipe_name)
 		# print(ids)
 		urls = []
