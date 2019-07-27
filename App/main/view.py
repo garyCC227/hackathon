@@ -25,7 +25,7 @@ ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 @main_blueprint.route('/result')
 def result():
-    return render_template('main/result.html', datas=data)
+    return render_template('main/result.html', datas=data) 
 
 
 @main_blueprint.route('/detail_recipe', methods=['POST','GET'])
@@ -33,13 +33,18 @@ def detail_recipe():
 	if request.method == 'POST':
 		recipe_name = request.form.get('recipe_name')
 		recipe_id = request.form.get('recipe_id')
-
 		ids = f.get_video_id(recipe_name)
-		# print(ids)
+
 		urls = []
 		for id in ids:
 			urls.append("https://www.youtube.com/embed/"+id["youTubeId"])
-		return render_template('main/recipe.html', links = urls)
+		
+		# detail 
+		html_nutri = f.visualize_nutrition(recipe_id)
+		html_ingre = f.visualize_ingredient(recipe_id)
+		html_equip = f.visualize_equipment(recipe_id)
+		
+		return render_template('main/recipe.html', links = urls, nutri=html_nutri, ingre=html_ingre, equip=html_equip)
 	
 	return render_template('main/result.html', datas=data)
 

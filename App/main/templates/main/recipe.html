@@ -8,7 +8,7 @@
 <!--event title-->
 <header class="w3-content w3-display-container w3-center w3-border-bottom w3-white" style="margin-top:70px;max-width:1500px;height:600px">
 
-    <div class="w3-col" style="width:60%">
+    <div class="w3-col" style="width:70%">
         {% if urls | length > 0 %}
             <div className="ui embed">
                     <iframe
@@ -19,107 +19,137 @@
                       frameBorder="0"
                       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
-                    > </iframe>>
+                    > </iframe>
                   </div>
+        {% else %}
+						<div className="ui embed">
+								<iframe
+									title="video player"
+									width="100%"
+									height="600px"
+									src="https://www.youtube.com/embed/CaFyZ4uQjBQ"
+									frameBorder="0"
+									allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+									allowFullScreen
+								> </iframe>
+							</div>
         {% endif %}
         <!-- <img src="./static/style/Icon1.png"  class="w3-opacity-min" style="height:600px;width:100%"> -->
     </div>
-    <div class="w3-col w3-display-container" style="width:40%">
-        <header><h1> Video List</h1></header>
-        <ul class="list-group" >
-            <li class="list-group-item">
-                <div class="w3-display-container"></div>
-                <div class="w3-row"> dsadas</div>
-                <img src="/static/style/Icon1.png" width="400px" height="150px" alt="">
-            </li>
-            <li class="list-group-item">Documents</li>        
-            <li class="list-group-item">Music</li>
-            <li class="list-group-item">Videos</li>
-        </ul>
-    </div>
+    <div class="w3-col w3-display-container" style="width:30%">
+			<div class="w3-center w3-content" style=" margin-top:200px">
+					<h1 class="w3-xxlarge w3-text-pink w3-opacity-min w3-margin-bottom"><b> dasdasdas </b></h1>
+					<h3 class="w3-opacity w3-text-grey w3-center" style="word-wrap: break-word;width:90%;margin-left:30px"><b>dasdsa</b></h3>
+					<br><br><br><br>
+			</div>
+	</div>
 </header>
 <!--end of the event title-->
+    <div class="w3-container" style="padding:40px;max-width:1400px;">
+				<div class="w3-col w3-white w3-card w3-display-container" style="padding:15px;margin-left: 15px;margin-top: 25px;height:400px;width:70%">
+						<div class="w3-col w3-container" style="width:50%;font-family:Arial">
+								<h4 style="font-family:Arial"> <i class="fas fa-map-marker-alt w3-text-red"></i> <b>Address:</b></h4> <h5>dasdsadsa</h5><br>
+								<h4 style="font-family:Arial"><i class="fa fa-mobile-phone w3-text-red"></i> <b>Phone Number:</b></h4> <h4>dasdas</h4><br>
+								<h4 style="font-family:Arial"><i class="fas fa-award w3-text-red"></i> <b>Tourist Award:</b></h4> dasdas<br><br>
+								<h4 style="font-family:Arial"><i class="fas fa-bookmark w3-text-red"></i> <b>Rate:</b></h4> <h2 class="w3-text-red w3-opacity-min" style="font-family:Arial"><b>4.5</b></h2><br>
+						</div>
 
-<!-- event content -->
-<div class="w3-row w3-content w3-display-container" style="margin-top:20px;max-width:1100px">
-    <!-- left description -->
-    <div class="w3-col" style="width:40%;">
-        <!-- description here -->
-        <div class="w3-row w3-white" style="max-height:auto">
-            <div class="w3-container w3-center" style="margin-top:40px" >
-                <h1 class="w3-opacitsy-min w3-text-red"><b>Description</b></h1>
-                <h3 class="text-muted w3-large w3-opacity-min" style="word-wrap:break-word;margin-bottom:70px;">dasklhdkjflaksdfhkhiwqonk</h3>
+						<div class="w3-container w3-col" style="width:45%;font-family:Arial">
+								<h4><i class="fa fa-clock-o w3-text-red"></i> <b class="w3-opacity-min">Open Hours</b></h4><hr>
+								
+						</div>
+				</div>
+				
+				<div class="w3-col w3-container w3-center" style="width:20%; margin-top:20px">
+						<h4 style="font-family:Arial" class="text-info w3-opacity-min"><b>Click to see Diagrams</b></h4><hr>
+						<div class="w3-row w3-margin-top">
+							<!-- Button trigger modal -->
+							<button type="button" class="btn btn-primary" data-toggle="modal" style="width:120px" data-target="#exampleModal1">
+								nutrition
+							</button>
+						</div>
+				
+						<div class="w3-row w3-margin-top">
+							<!-- Button trigger modal -->
+							<button type="button" class="btn btn-primary" data-toggle="modal" style="width:120px" data-target="#exampleModal2">
+								ingredient
+							</button>
+						</div>
+						<div class="w3-row w3-margin-top">
+							<!-- Button trigger modal -->
+							<button type="button" class="btn btn-primary" data-toggle="modal" style="width:120px" data-target="#exampleModal3">
+								equipments
+							</button>
+						</div>
+				</div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade bd-example-modal-xl" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{ nutri | safe }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
             </div>
         </div>
-        <!-- end description -->
-        <hr>
-        <!-- tags : loop all tags here-->
-        <div class="w3-row" style="height:200px">
-   
-            <h1 class="colors w3-large w3-button text-white w3-border-0 w3-round-xxlarge w3-hover-opacity" style="width:auto;margin-top:5px"><b>hello</b></h1>
-       
-        </div>
-        <!-- end tags -->
-        <script type="text/javascript">
-
-            ran_col()
-            function ran_col(){
-                var ran_class = [" w3-blue", " w3-red", " w3-orange", " w3-green", " w3-yellow"];
-                var class_ = ran_class[0];
-                tags = document.getElementsByClassName('colors')
-                for(var i=0;i<tags.length;i++){
-                    tags[i].className += ran_class[Math.floor(Math.random() * ran_class.length)]
-                }
-            }
-        </script>
     </div>
-    <!-- end left description -->
 
-    <!-- right info -->
-    <div class="w3-col" style="margin-left:20px;width:40%;">
-
-        <hr>
-        <!-- end map -->
-
-    <!-- event info -->
-    <div class="w3-row w3-white" style="height:700px">
-        <div class="w3-display-container  text-monospace w3-xxlarge" style="margin:30px;font-family:Arial">
-
-            <!-- content start here -->
-            <!-- address -->
-            <div class="w3-row w3-center w3-text-pink" style="margin-top:20px;padding:20px">
-                <i class="fa fa-map-marker"></i>  <b class="w3-opacity-min">where</b><br>
-                <h1 class="w3-xlarge w3-text-blue w3-opacity w3-margin-top w3-margin-bottom" style="font-family:Arial;">dasdas</h1>
+    <!-- Modal -->
+    <div class="modal fade bd-example-modal-xl" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{ ingre | safe }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
             </div>
-            <hr>
-
-            <!-- dates-->
-            <div class="w3-row w3-center w3-text-pink" style="margin-top:20px;padding:20px">
-                <i class="fa fa-calendar"></i>  <b class="w3-opacity-min">When</b><br>
-                <h1 class="w3-large text-dark w3-opacity w3-margin-top w3-margin-bottom" style="font-family:Arial;"> das</h1> <h1 class="w3-large text-dark w3-opacity w3-margin-top w3-margin-bottom">to</h1>
-                <h1 class="w3-large text-dark w3-opacity w3-margin-top w3-margin-bottom" style="font-family:Arial;">dasdas</h1>
-            </div>
-            <hr>
-
-            <!-- officialWebsite -->
-            <div class="w3-row w3-center w3-text-pink" style="margin-top:20px;padding:20px">
-                <i class="fa fa-mobile-phone"></i>  <b class="w3-opacity-min w3-xlarge">More info</b><br>
-
-                <a href="#" class="w3-row w3-large w3-text-blue w3-margin-topw3-hover-opacity" style="text-decoration:underline">website<i class=" w3-medium glyphicon glyphicon-chevron-right"></i> </a>
-                <a href="#" class="w3-row w3-large w3-text-blue w3-margin-bottom w3-hover-opacity"><b class="text-dark w3-opacity">Email:</b> <i style="text-decoration:underline;font-family:Arial;">dsadsa@,com</i><i class=" w3-medium glyphicon glyphicon-chevron-right"></i> </a>
-            </div>
-            <hr>
-
-            <!-- content end here -->
-
         </div>
     </div>
-    <!-- end event info -->
 
+    <!-- Modal -->
+    <div class="modal fade bd-example-modal-xl" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{ equip | safe }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- end right info -->
 
-</div>
 
 </div>
 
