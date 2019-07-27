@@ -11,11 +11,13 @@ if __name__ == '__main__':
 
     json_labels = google_vision.getJson(filename)
     selected_labels = analyze.toDataFrame(json_labels)
-    print (selected_labels)
+    # print (selected_labels)
     labels = []
     for key, value in selected_labels.items():
         labels.append(value)
     labels = np.array(labels)
-    print(labels)
-    model.predict(labels)
+    # print(labels)
+    print (model.predict(labels))
+
+    print (model.getPlot(labels))
     # classification.naive_bayes(selected_labels)
