@@ -36,16 +36,9 @@ def detail_recipe():
 	
 	return render_template('main/result.html', datas=data)
 
-
+# for survey form
 @main_blueprint.route('/')
 def index():
-    return render_template('main/main.html')
-
-# for survey form
-@main_blueprint.route('/temp')
-def temp():
-	print(data)
-	write_to_json_file('data.json', data)
 	return render_template('main/temp.html')
 
 
