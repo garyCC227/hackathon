@@ -30,22 +30,21 @@ class Food:
     
     """Generate Meal
         :param: type=(str: breakfast, soup, main course) 
-        :type return: json{meal:image, serving etc, nutrient}  
+        :return: json{meal:image, serving etc, nutrient}  
     """
-    def get_video(self, query=None, type=None, cuisine="Italian", excludeingredients="mustard", \
-                  includeingredients="chicken", maxLength=5, number=2):
+    def get_video(self, query="chicken soup", type1="main course", cuisine="Italian", excludeingredients="mustard", \
+                  includeingredients="chicken"):
         if query == None:
             return "need search keyword"
+        
         r = json.loads(self.http_.request(
             'GET',
             "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/videos/search",
             fields={'query': query,
-                    'type': type,
+                    'type': type1,
                     'cuisine': cuisine,
                     'excludeingredients': excludeingredients,
                     'includeingredients': includeingredients,
-                    'maxLength': maxLength,
-                    'number': number,
                     },
             headers=HEADER,
         ).data.decode('utf-8'))
@@ -117,7 +116,7 @@ class Food:
         for recipe in result:
             id = recipe["id"]
             recipe["description"] = self.summarize_recipe(id)["summary"]
-            recipe["image"] = "https://spoonacular.com/recipeImages/{}-312x150.jpg".format(id)
+            recipe["image"] = "https://spoonacular.com/recipeImages/{}-300x150.jpg".format(id)
             
         return result
     
@@ -125,7 +124,7 @@ if __name__ == '__main__':
     Api = "56d77e19b7mshca1482175a5bf43p15b63djsn0ca1fbbea757"
     f = Food(Api)
     
-    result = f.generate_recipe_card()
+    result = f.get_video()
     # add descriptoin and change image 
     #result = f.generate_recipe_card()
     # zzz = f.summarize_recipe(1003464)
