@@ -66,22 +66,19 @@ def submit_survey():
 		diet = input.get('diet')
 		height = input.get('height')
 
-		print(name, age, weight, gender, diet, height)
-		
-	return render_template('main/temp.html')
-
-
-@main_blueprint.route('/upload', methods=["POST"])
-def send_files():
-	if request.method == 'POST':
 		if 'file' in request.files:
 			f = request.files['file']
 			if f and allowed_file(f.filename):
 				filename = secure_filename(f.filename)
 				f.save(os.path.join(UPLOAD_FOLDER+'/',filename))
-			else:
-				return "bad"
-	return "successful_upload"
+		
+		# image file image
+		fn = f.filename
+		print(fn)
+		# print(name, age, weight, gender, diet, height)
+		
+	return render_template('main/temp.html')
+
 
 
 def allowed_file(filename):
