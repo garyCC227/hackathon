@@ -1,8 +1,11 @@
 from flask import *
 import os
 
+
 app = Flask(__name__)
 app.config['SECRECT_KEY'] = 'Strong'
+
+
 app.secret_key = 'any random string'
 
 

@@ -1,0 +1,292 @@
+{% extends 'base.html' %} {% block title %} <title>Login</title> {% endblock %}
+{% block content %}
+<!--place name , picture, address-->
+<div
+  class="w3-content"
+  style="margin-top:20px;margin-left:300px;max-width:1400px;height:500px"
+>
+  <header class="w3-container w3-center w3-border-bottom w3-padding-48">
+    <style>
+      div.rightInfo {
+        float: right;
+        width: 35%;
+        height: 500px;
+        margin-right: 40px;
+      }
+    </style>
+    <!-- place detail-->
+    <div class="rightInfo w3-white">
+      <div class="w3-container w3-center text-monospace"style="margin-top:200px">
+        <h2 class="w3-xxlarge w3-text-red w3-opacity-min "><b>aaaaaa</b></h2>
+        <h4 class="w3-opacity w3-text-grey w3-center">dasdsa</h4>
+        <h4 class="w3-margin-top text-dark w3-opacity-min">
+          <i class="fas fa-map-marker-alt w3-text-blue"></i> <b>bbbbb</b>
+        </h4>
+        <br /><br /><br /><br />
+        <form action="" method="post">
+          <input style="display:none" name="address" value="" />
+          <input name="place_id" style="display:none" value="" />
+          <button
+            type="submit"
+            name="add_bank"
+            value=""
+            class="btn btn-success w3-large"
+            style="margin-top:5px;margin-bottom: 1%;padding:5px;z-index: 100;"
+          >
+            Add To Timetable
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- end of place detail-->
+
+    <style>
+      .mySlides {
+        display: none;
+      }
+      .w3-left,
+      .w3-right,
+      .w3-badge {
+        cursor: pointer;
+      }
+      .w3-badge {
+        height: 15px;
+        width: 15px;
+        padding: 0;
+      }
+      .picSlide {
+        width: 62%;
+      }
+    </style>
+
+    <!--place photos-->
+    <div class="w3-col w3-display-container picSlide">
+      <img
+        class="mySlides w3-opacity-min"
+        src="./static/style/Icon1.png"
+        style="width: 100%;max-height:500px;min-height:500px;"
+      />
+    </div>
+
+    <!--end place photos-->
+    <script>
+      var slideIndex = 1;
+      showDivs(slideIndex);
+
+      function plusDivs(n) {
+        showDivs((slideIndex += n));
+      }
+
+      function currentDiv(n) {
+        showDivs((slideIndex = n));
+      }
+
+      function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demo");
+        if (n > x.length) {
+          slideIndex = 1;
+        }
+        if (n < 1) {
+          slideIndex = x.length;
+        }
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" w3-white", "");
+        }
+        x[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " w3-white";
+      }
+    </script>
+  </header>
+  <!--end of the header detail-->
+</div>
+
+<!-- detail  -->
+<div
+  class="w3-content w3-display-container w3-row"
+  style="padding:5px;max-width:1100px;"
+>
+  <!--start of more detail-->
+  <!-- left content -->
+  <div
+    class="w3-col w3-white w3-display-container w3-card"
+    style="margin-top: 25px;min-height:320px;width:30%"
+  >
+    <br />
+    <div class="w3-container">
+      <h2 class="w3-center">
+        <i class="fas fa-book-reader text-info "></i>
+        <b class="w3-opacity-min">About</b>
+      </h2>
+      <p class="w3-medium w3-opacity-min" style="font-family:Arial"></p>
+    </div>
+  </div>
+  <!-- middle content -->
+  <div
+    class="w3-col w3-white w3-card w3-display-container"
+    style="margin-left: 15px;margin-top: 25px;height:320px;width:40%"
+  >
+    <br /><br />
+    <div class="w3-col w3-container" style="width:50%;font-family:Arial">
+      <h4 style="font-family:Arial">
+        <i class="fas fa-map-marker-alt w3-text-red"></i> <b>Address:</b>
+      </h4>
+      <h5></h5>
+      <br />
+      <h4 style="font-family:Arial">
+        <i class="fa fa-mobile-phone w3-text-red"></i> <b>Phone Number:</b>
+      </h4>
+      <h4>
+        <i class="fas fa-times w3-text-red"></i>
+        <i class="fas fa-times w3-text-red"></i>
+        <i class="fas fa-times w3-text-red"></i>
+      </h4>
+      <br />
+      <h4 style="font-family:Arial">
+        <i class="fas fa-award w3-text-red"></i> <b>Tourist Award:</b>
+      </h4>
+      <div class="w3-text-red w3-opacity-min">
+        <i class="fas fa-trophy  w3-medium"></i>
+        <i class="fas fa-trophy  w3-medium"></i>
+        <i class="fas fa-trophy w3-medium"></i>
+      </div>
+      <br /><br />
+      <h4 style="font-family:Arial">
+        <i class="fas fa-bookmark w3-text-red"></i> <b>Rate:</b>
+      </h4>
+      <h2 class="w3-text-red w3-opacity-min" style="font-family:Arial">
+        <b></b>
+      </h2>
+      <br />
+    </div>
+
+    <div class="w3-container w3-col" style="width:45%;font-family:Arial">
+      <h4>
+        <i class="fa fa-clock-o w3-text-red"></i>
+        <b class="w3-opacity-min">Open Hours</b>
+      </h4>
+      <hr />
+    </div>
+  </div>
+
+  <!-- right contetn ifame-->
+  <div
+    class="w3-col w3-white w3-center w3-card"
+    style="margin-left:15px;height:320px;width:23%;margin-top: 25px;"
+  >
+    <br /><br />
+    <div class="w3-container">
+      <div class="mapouter">
+        <div class="gmap_canvas">
+          <iframe
+            width="200"
+            height="150"
+            id="gmap_canvas"
+            src="#"
+            frameborder="0"
+            scrolling="no"
+            marginheight="0"
+            marginwidth="0"
+          ></iframe
+          ><a href="https://www.emojilib.com"></a>
+        </div>
+      </div>
+      <br />
+    </div>
+  </div>
+  <!--end of more detail-->
+</div>
+<!-- tags -->
+<div
+  class="w3-display-container w3-content"
+  style="height:auto;margin-top:10px;max-width:1200px"
+>
+  <div class="w3-col" style="width:80%">
+    <h2
+      class="colors w3-medium w3-button text-white w3-border-0 w3-round-xxlarge w3-hover-opacity"
+      style="width:auto;margin-top:5px"
+    >
+      hello world
+    </h2>
+  </div>
+</div>
+<script type="text/javascript">
+  ran_col();
+  function ran_col() {
+    var ran_class = [
+      " w3-blue",
+      " w3-red",
+      " w3-orange",
+      " w3-green",
+      " w3-yellow"
+    ];
+    var class_ = ran_class[0];
+    tags = document.getElementsByClassName("colors");
+    for (var i = 0; i < tags.length; i++) {
+      tags[i].className +=
+        ran_class[Math.floor(Math.random() * ran_class.length)];
+    }
+  }
+</script>
+<!-- end tags -->
+<!-- top events -->
+<div class="w3-content" style="max-width:1200px;">
+  <h1 class=" text-monospace bg-light w3-center w3-text-pink" style="opacity: 0.8;margin-top: 20px;padding: 15px;margin-left: 550px;width:500px"><b>Top events</b></h1>
+  <div class="w3-display-container w3-white" style="margin-bottom:50px;margin-top:10px;height:435px;padding:10px">
+      <!-- top events rows -->
+      <div class="w3-row">
+          <!-- most left event box -->
+          <div class="w3-col w3-display-container" style="width:40%">
+              <h1 class="w3-display-middle text-white w3-xxxlarge" style="opacity:1.0"><b> das</b></h1>
+              <form action="dsa" method="post">
+                  <button class="btn btn-outline-dark border-0 w3-round "  type="submit" name="event_data" value="dsadas">
+                      <img src="/static/style/Icon1.png" class="w3-image" style="opacity: 0.7;height:400px;width:100%">
+                  </button>
+              </form>
+          </div>
+          <!-- end most left event box -->
+          <!-- middle event box -->
+          <div class="w3-col w3-display-container" style="width:35%">
+              <!-- top half middle box -->
+              <div class="w3-row w3-display-container">
+                  <h1 class="w3-display-middle text-white w3-xxlarge" style="opacity:1.0"><b> dsadsadas</b></h1>
+                  <form action="" method="post">
+                      <button class="btn btn-outline-dark border-0 w3-round " type="submit" name="event_data" value="dasdas">
+                          <img src="/static/style/Icon1.png" class="w3-image" style="opacity: 0.7;height:200px;width:100%">
+                      </button>
+                  </form>
+              </div>
+
+              <!-- bottom half middle box -->
+              <div class="w3-row w3-display-container">
+                  <h1 class="w3-display-middle text-white w3-xxlarge" style="opacity:1.0"><b>dsadsa</b></h1>
+                  <form action="s" method="post">
+                      <button class="btn btn-outline-dark border-0 w3-round " type="submit" name="event_data" value="dsa">
+                          <img src="/static/style/Icon1.png" class="w3-image" style="opacity: 0.7;height:200px;width:100%">
+                      </button>
+                  </form>
+              </div>
+          </div>
+          <!-- end middle event box -->
+          <!-- most right event box -->
+          <div class="w3-col w3-display-container" style="width:25%">
+              <h1 class="w3-display-middle text-white w3-xxlarge" style="opacity:1.0"><b> dsadsa</b></h1>
+              <form action="sa" method="post">
+                  <button class="btn btn-outline-dark border-0 w3-round " type="submit" name="event_data" value="dsadsa">
+                      <img src="/static/style/Icon1.png" class="w3-image" style="opacity: 0.7;height:400px;width:100%">
+                  </button>
+              </form>
+          </div>
+          <!-- end most right event box -->
+
+      </div>
+      <!-- end of events row -->
+  </div>
+</div>
+<!-- end top events -->
+<!-- Footer -->
+{% endblock %}
