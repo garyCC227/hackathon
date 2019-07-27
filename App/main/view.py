@@ -22,11 +22,13 @@ def result():
     return render_template('main/result.html', datas=data)
 
 
-@main_blueprint.route('/detail_recipe')
+@main_blueprint.route('/detail_recipe', methods=['POST','GET'])
 def detail_recipe():
-	# id = f.get_video_id(recipe_name)
-    return render_template('main/recipe.html', url="https://www.youtube.com/embed/" + id)
-
+	if request.method == 'POST':
+		recipe_name = request.form.get('recipe_name')
+		print(recipe_name)
+	id = f.get_video_id(recipe_name, 5)
+	return render_template('main/recipe.html', url="https://www.youtube.com/embed/" + id)
 
 @main_blueprint.route('/')
 def index():

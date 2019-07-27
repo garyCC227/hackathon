@@ -234,7 +234,7 @@
 </script>
 <!-- end tags -->
 <!-- top events -->
-<div class="w3-content" style="max-width:1200px;">
+<div class="w3-content" style="max-width:1500px;margin-left:300px">
   <h1 class=" text-monospace bg-light w3-center w3-text-pink" style="opacity: 0.8;margin-top: 20px;padding: 15px;margin-left: 550px;width:500px"><b>Top events</b></h1>
   <div class="w3-display-container w3-white" style="margin-bottom:50px;margin-top:10px;height:435px;padding:10px">
     <div class="ui link cards w3-row-padding w3-center">  
@@ -242,31 +242,38 @@
       {% if datas %}
       {% for data in datas %}
       <div class="w3-third">
-      <form action="">
-        <div class="w3-card-2 w3-button">
-          <img src="{{data['image']}}" height="300px;" width="400px" alt="Alps">
+      <form action="{{ url_for('main.detail_recipe') }}" method="post">
+        <!-- <input name="recipe_name" value="{{ data['title'] }}" style="display: none"/> -->
+        <div class="w3-card-2 ">
+          <button class="btn btn-outline-light border-0 w3-round " type="submit" name="recipe_name" value="{{ data['title'] }}">
+          <img src="{{data['image']}}" style="margin-top:20px;" class=" w3-image w3-hover-opacity" height="300px;" width="400px" alt="Alps">
+          </button>
           <div class="w3-display-container w3-center">
             <h4 class="w3-center">{{data['title']}}</h4><hr>
             <!-- logo -->
             <div class="w3-display-container">
-              <div class="w3-half">
-                <i class="far fa-clock w3-left w3-large w3-text-green"> {{ data['readyInMinutes']}}</i>
+              <div class="w3-half w3-button">
+                <i class="far fa-clock w3-center w3-xlarge w3-text-green"> Prepare time: {{ data['readyInMinutes']}}</i>
               </div> 
-              <div class="w3-half">
-                <i class="far fa-clock w3-left w3-large w3-text-red"> {{data['servings']}}</i>
+              <div class="w3-half w3-button">
+                <i class="fas fa-utensils w3-center  w3-xlarge w3-text-red"> Serving: {{data['servings']}}</i>
 
               </div>
             </div>
             <!-- end of logo -->
             
             <!-- description --><br/><br/>
-            <div class="w3-content w3-row">  
-              <style>
-                p{
-                  word-wrap: break-word !important;
-                }
-              </style>
-              <p style="">{{ data['description']}}</p>
+            <style>
+              .mystory{
+                overflow: hidden;
+                text-overflow: ellipsis; 
+              }
+              .mystory:hover{
+                overflow: visible
+              }
+            </style>
+            <div class="mystory w3-content w3-container w3-row">  
+              <p  style="text-align: left; margin-right:auto">{{ data['description'] | safe}}</p>
             </div>
           </div>
         </div>
