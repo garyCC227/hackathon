@@ -35,18 +35,18 @@ def detail_recipe():
 	if request.method == 'POST':
 		recipe_name = request.form.get('recipe_name')
 		recipe_id = request.form.get('recipe_id')
-		ids = f.get_video_id(recipe_name)
+		id = f.get_video_id(recipe_name)
 
-		urls = []
-		for id in ids:
-			urls.append("https://www.youtube.com/embed/"+id["youTubeId"])
+
+		video_url = "https://www.youtube.com/embed/"+id
+		print(video_url)
 		
 		# detail 
 		html_nutri = f.visualize_nutrition(recipe_id)
 		html_ingre = f.visualize_ingredient(recipe_id)
 		html_equip = f.visualize_equipment(recipe_id)
 		
-		return render_template('main/recipe.html', links=urls, nutri=html_nutri, ingre=html_ingre, equip=html_equip)
+		return render_template('main/recipe.html', links=video_url, nutri=html_nutri, ingre=html_ingre, equip=html_equip)
 	
 	return render_template('main/result.html', datas=data)
 

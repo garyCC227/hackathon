@@ -1,4 +1,6 @@
 import request, json, urllib3
+import urllib.request
+from bs4 import BeautifulSoup
 
 HEADER = {
     "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
@@ -33,6 +35,7 @@ class Food:
         :return: json{meal:image, serving etc, nutrient}  
     """
     def get_video_id(self, query=None, number=1):
+        '''
         if query == None:
             return "need search keyword"
         
@@ -45,7 +48,16 @@ class Food:
             headers=HEADER,
         ).data.decode('utf-8'))
         print(r["videos"][0]["youTubeId"])
-        return r["videos"][0]["youTubeId"]
+        '''
+        query = urllib.parse.quote(query)
+        url = "https://www.youtube.com/results?search_query=" + query
+        response = urllib.request.urlopen(url)
+        html = response.read()
+        soup = BeautifulSoup(html, 'html.parser')
+        #for vid in soup.find(attrs={'class':'yt-uix-tile-link'}):
+
+        return soup.find(attrs={'class':'yt-uix-tile-link'})["href"].replace("/watch?v=", "")
+            # r["videos"][0]["youTubeId"]
 
     """ abstarct method of getting information by id 
     """
@@ -165,10 +177,10 @@ class Food:
 if __name__ == '__main__':
     Api = "56d77e19b7mshca1482175a5bf43p15b63djsn0ca1fbbea757"
     f = Food(Api)
-    # result = f.get_video_id("Breakfast Porridge")
+    result = f.get_video_id("Breakfast Porridge")
     # add descriptoin and change image 
     #result = f.generate_recipe_card()
-    zzz = f.get_recipe_info(636588)
+    #zzz = f.get_recipe_info(636588)
     # print(zzz)
     #video = f.get_video()
 
