@@ -32,8 +32,7 @@ class Food:
         :param: type=(str: breakfast, soup, main course) 
         :return: json{meal:image, serving etc, nutrient}  
     """
-    def get_video(self, query="chicken soup", type1="main course", cuisine="Italian", excludeingredients="mustard", \
-                  includeingredients="chicken"):
+    def get_video_id(self, query=None, number=1):
         if query == None:
             return "need search keyword"
         
@@ -41,14 +40,11 @@ class Food:
             'GET',
             "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/videos/search",
             fields={'query': query,
-                    'type': type1,
-                    'cuisine': cuisine,
-                    'excludeingredients': excludeingredients,
-                    'includeingredients': includeingredients,
+                    'number': number
                     },
             headers=HEADER,
         ).data.decode('utf-8'))
-        return r
+        return r["videos"][0]["youTubeId"]
     
     """ abstarct method of getting information by id 
     """
@@ -124,21 +120,21 @@ if __name__ == '__main__':
     Api = "56d77e19b7mshca1482175a5bf43p15b63djsn0ca1fbbea757"
     f = Food(Api)
     
-    result = f.get_video()
+    result = f.get_video_id("beef")
     # add descriptoin and change image 
     #result = f.generate_recipe_card()
     # zzz = f.summarize_recipe(1003464)
     #video = f.get_video()
 
 
-'''
-"vegetarian":false
-"vegan":false
-"glutenFree":true
-"dairyFree":true
-"veryHealthy":false
-"cheap":false
-"veryPopular":false
-"sustainable":false
-'''
+    '''
+    "vegetarian":false
+    "vegan":false
+    "glutenFree":true
+    "dairyFree":true
+    "veryHealthy":false
+    "cheap":false
+    "veryPopular":false
+    "sustainable":false
+    '''
 

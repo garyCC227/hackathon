@@ -17,9 +17,6 @@ main_blueprint = Blueprint(
 UPLOAD_FOLDER = './App/main/static/uploads'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
-
-
-
 @main_blueprint.route('/result')
 def result():
     return render_template('main/result.html', datas=data)
@@ -27,7 +24,6 @@ def result():
 
 @main_blueprint.route('/detail_recipe')
 def detail_recipe():
-		
     return render_template('main/recipe.html')
 
 
