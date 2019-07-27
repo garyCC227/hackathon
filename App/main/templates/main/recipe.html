@@ -50,15 +50,23 @@
 						<div class="w3-col w3-container" style="font-family:Arial">
                             <h4 style="font-family:Arial"> <i class="fas fa-map-marker-alt w3-text-red"></i> <b>Step:</b></h4>
                             <div class="list-group">
-                            <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                            <a href="#" class="list-group-item list-group-item-action list-group-item-primary">A simple primary list group itemdsaed</a>
-                            <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">A simple secondary list group item</a>
-                            <a href="#" class="list-group-item list-group-item-action list-group-item-success">A simple success list group item</a>
-                            <a href="#" class="list-group-item list-group-item-action list-group-item-danger">A simple danger list group item</a>
-                            <a href="#" class="list-group-item list-group-item-action list-group-item-warning">A simple warning list group item</a>
-                            <a href="#" class="list-group-item list-group-item-action list-group-item-info">A simple info list group item</a>
-                            <a href="#" class="list-group-item list-group-item-action list-group-item-info">A simple info list group item</a>
+                            {% for step in steps %}
+                                <a href="#" class="colors list-group-item list-group-item-action">{{ loop.index}}. {{ step }}</a>
+                            {% endfor %}
+                            <script type="text/javascript">
 
+                                ran_col()
+                                function ran_col(){
+                                    var ran_class = [" list-group-item-primary ", 
+                                    " list-group-item-success ", " list-group-item-danger ", " list-group-item-warning ",
+                                    " list-group-item-info "];
+                                    var class_ = ran_class[0];
+                                    tags = document.getElementsByClassName('colors')
+                                    for(var i=0;i<tags.length;i++){
+                                        tags[i].className += ran_class[Math.floor(Math.random() * ran_class.length)]
+                                    }
+                                }
+                            </script>
                         </div>
 
                         </div>

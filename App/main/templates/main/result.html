@@ -25,32 +25,28 @@
           <div class=" w3-col w3-container" style="width:50%">
           <ul class="list-group">
             <li class="list-group-item d-flex justify-content-between align-items-center">
-              Cras justo odio
-              <span class="badge badge-primary badge-pill">14</span>
+              Age
+              <span class="badge badge-primary badge-pill">{{user_input['age']}}</span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
-              Dapibus ac facilisis in
-              <span class="badge badge-primary badge-pill">2</span>
+              Gender
+              <span class="badge badge-primary badge-pill">{{gender}}</span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
-              Morbi leo risus
-              <span class="badge badge-primary badge-pill">1</span>
+              Weight
+              <span class="badge badge-primary badge-pill">{{user_input['weight']}}</span>
             </li>
           </ul>
         </div>
         <div class=" w3-col w3-container" style="width:50%">
           <ul class="list-group">
             <li class="list-group-item d-flex justify-content-between align-items-center">
-              Cras justo odio
-              <span class="badge badge-primary badge-pill">14</span>
+              Favourite Diet
+              <span class="badge badge-primary badge-pill">{{diet}}</span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
-              Dapibus ac facilisis in
-              <span class="badge badge-primary badge-pill">2</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              Morbi leo risus
-              <span class="badge badge-primary badge-pill">1</span>
+              Height
+              <span class="badge badge-primary badge-pill">{{user_input['height']}}</span>
             </li>
           </ul>
         </div>
@@ -60,12 +56,12 @@
       <div class="w3-row w3-display-container" style="margin-top:20px">
         <div class="w3-col" style="width: 50%">
           <h3> BMI</h3>
-          <span class="w3-xxxlarge btn btn-outline-info w3-round-xxlarge"><b style="font-size: 70px">90</b></span>
+          <span class="w3-xxxlarge btn btn-outline-info w3-round-xxlarge"><b style="font-size: 70px">{{ bmi}}</b></span>
         </div>
 
         <div class="w3-col" style="width: 50%">
-            <h3> BMI</h3>
-            <span class="w3-xxxlarge btn btn-outline-danger w3-round-xxlarge"><b style="font-size: 70px">90</b></span>
+            <h3> BMR</h3>
+            <span class="w3-xxxlarge btn btn-outline-danger w3-round-xxlarge"><b style="font-size: 70px">{{ bmr}}</b></span>
           </div>
       </div>
     </div>
