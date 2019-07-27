@@ -24,7 +24,8 @@ def result():
 
 @main_blueprint.route('/detail_recipe')
 def detail_recipe():
-    return render_template('main/recipe.html')
+	# id = f.get_video_id(recipe_name)
+    return render_template('main/recipe.html', url="https://www.youtube.com/embed/" + id)
 
 
 @main_blueprint.route('/')
