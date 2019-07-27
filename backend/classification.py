@@ -17,7 +17,7 @@ from sklearn.ensemble import RandomForestClassifier
 class Classifier():
     def __init__(self):
         # preprocession
-        dataset = pd.read_csv('result.csv')
+        dataset = pd.read_csv('backend/result.csv')
         dataset = dataset.sort_values(by ='BodyType' )
 
         # split into three dataframes
