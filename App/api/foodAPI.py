@@ -97,8 +97,8 @@ class Food:
         :recipeID: recipeID: int
         :type return: list{vegan, glutenFree: bool, price: float, src: url}  
     """
-    def get_recipe_info(self, recipeID):
-        return self.get_url("{}/information".format(recipeID))
+    def get_recipe_instruction(self, recipeID):
+        return self.get_url("{}/analyzedInstructions".format(recipeID))
 
     """ price breakdown
         :recipeID: recipeID: int
@@ -177,10 +177,10 @@ class Food:
 if __name__ == '__main__':
     Api = "56d77e19b7mshca1482175a5bf43p15b63djsn0ca1fbbea757"
     f = Food(Api)
-    result = f.get_video_id("Breakfast Porridge")
+   # result = f.get_video_id("Breakfast Porridge")
     # add descriptoin and change image 
     #result = f.generate_recipe_card()
-    #zzz = f.get_recipe_info(636588)
+    zzz = f.get_recipe_instruction(636588)
     # print(zzz)
     #video = f.get_video()
 
