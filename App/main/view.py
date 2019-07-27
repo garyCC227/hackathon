@@ -1,8 +1,11 @@
 from flask import render_template, Blueprint,redirect,request,flash
 from werkzeug import secure_filename
 import os
-from App import app
+from App.api.foodAPI import Food
+from App.implement import *
 
+f = Food()
+data = f.generate_recipe_card()
 
 main_blueprint = Blueprint(
     'main',
@@ -17,10 +20,11 @@ ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 @main_blueprint.route('/result')
 def result():
-    return render_template('main/video.html')
+    return render_template('main/result.html', datas=data)
 
 @main_blueprint.route('/detail_recipe')
 def detail_recipe():
+		
     return render_template('main/recipe.html')
 
 @main_blueprint.route('/')
@@ -30,6 +34,8 @@ def index():
 # for survey form
 @main_blueprint.route('/temp')
 def temp():
+	print(data)
+	write_to_json_file('data.json', data)
 	return render_template('main/temp.html')
 
 @main_blueprint.route('/submit_survey', methods=['POST','GET'])
@@ -63,4 +69,4 @@ def send_files():
 
 def allowed_file(filename):
     return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+					filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
