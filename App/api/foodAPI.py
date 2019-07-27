@@ -1,4 +1,5 @@
 import request, json, urllib3
+from youtube import API 
 
 HEADER = {
     "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
@@ -40,11 +41,11 @@ class Food:
             'GET',
             "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/videos/search",
             fields={'query': query,
-                    'number': number
+                    'number': number,
                     },
             headers=HEADER,
         ).data.decode('utf-8'))
-        return r["videos"][0]["youTubeId"]
+        return r["videos"]
     
     """ abstarct method of getting information by id 
     """
@@ -120,7 +121,7 @@ if __name__ == '__main__':
     Api = "56d77e19b7mshca1482175a5bf43p15b63djsn0ca1fbbea757"
     f = Food(Api)
     
-    result = f.get_video_id("beef")
+    result = f.get_video_id("Breakfast Porridge")
     # add descriptoin and change image 
     #result = f.generate_recipe_card()
     # zzz = f.summarize_recipe(1003464)

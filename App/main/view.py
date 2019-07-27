@@ -28,7 +28,7 @@ def detail_recipe():
 		recipe_name = request.form.get('recipe_name')
 		print(recipe_name)
 	id = f.get_video_id(recipe_name, 5)
-	return render_template('main/recipe.html', url="https://www.youtube.com/embed/" + id)
+	return render_template('main/recipe.html', url="https://www.youtube.com/embed/" + id[0])
 
 @main_blueprint.route('/')
 def index():
