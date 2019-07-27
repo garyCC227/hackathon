@@ -21,19 +21,13 @@ ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 def result():
     return render_template('main/result.html', datas=data)
 
-<<<<<<< HEAD
+
 @main_blueprint.route('/detail_recipe', methods=['POST','GET'])
 def detail_recipe():
 	if request.method == 'POST':
 			recipe_name = request.form.get('recipe_name')
 			print(recipe_name)
 	return render_template('main/recipe.html')
-=======
-
-@main_blueprint.route('/detail_recipe')
-def detail_recipe():
-    return render_template('main/recipe.html')
->>>>>>> f06cbd4a774e35511729da0e6e0a7d53814e62de
 
 
 @main_blueprint.route('/')
