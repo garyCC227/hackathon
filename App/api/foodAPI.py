@@ -112,10 +112,12 @@ class Food:
         :type return: list{general nutrition: str, good: list, bad: list}  
     """
     def generate_recipe_card(self):
-        result = f.generate_meal()["meals"]
+        result = self.generate_meal()["meals"]
         # add descriptoin and change image 
         for recipe in result:
-            recipe["description"] = f.summarize_recipe(recipe["id"])["summary"]
+            id = recipe["id"]
+            recipe["description"] = self.summarize_recipe(id)["summary"]
+            recipe["image"] = "https://spoonacular.com/recipeImages/{}-312x150.jpg".format(id)
             
         return result
     
@@ -123,12 +125,8 @@ if __name__ == '__main__':
     Api = "56d77e19b7mshca1482175a5bf43p15b63djsn0ca1fbbea757"
     f = Food(Api)
     
-    result = f.generate_meal()["meals"]
+    result = f.generate_recipe_card()
     # add descriptoin and change image 
-    for recipe in result:
-        id = recipe["id"]
-        recipe["description"] = f.summarize_recipe(id)["summary"]
-        recipe["image"] = "https://spoonacular.com/recipeImages/{}-312x150.jpg".format(id)
     #result = f.generate_recipe_card()
     # zzz = f.summarize_recipe(1003464)
     #video = f.get_video()
