@@ -169,7 +169,7 @@ if __name__ == '__main__':
     # result = f.get_video_id("Breakfast Porridge")
     # add descriptoin and change image 
     #result = f.generate_recipe_card()
-    zzz = f.visualize_nutrition(636588)
+    zzz = f.get_recipe_info(636588)
     # print(zzz)
     #video = f.get_video()
 

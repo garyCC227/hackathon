@@ -17,7 +17,8 @@ def toDataFrame(file):
         if label in dic:
             result.append(dic[label])
         else:
-            result.append(np.nan)
+            # result.append(np.nan)
+            result.append(0)
 
     return ({target_labels[0]: result[0],
              target_labels[1]: result[1],

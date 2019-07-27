@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # preprocession
-dataset = pd.read_csv('result4.csv')
+dataset = pd.read_csv('result.csv')
 dataset = dataset.sort_values(by ='BodyType' )
 
 # split into three dataframes
@@ -31,8 +31,8 @@ from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 0)
 
 # Fitting SVM to the Training set
-from sklearn.naive_bayes import GaussianNB
-classifier = GaussianNB()
+from sklearn.ensemble import RandomForestClassifier
+classifier = RandomForestClassifier(n_estimators = 3, criterion = 'entropy', random_state = 0)
 classifier.fit(X_train, y_train)
 
 # Predicting the Test set results

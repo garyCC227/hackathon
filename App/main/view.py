@@ -4,6 +4,12 @@ import os
 from App.api.foodAPI import Food
 from App.implement import *
 
+import backend.google_vision
+import backend.analyze
+import backend.classification
+import sys
+import numpy as np
+
 f = Food()
 data = f.generate_recipe_card()
 
@@ -20,11 +26,6 @@ ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 @main_blueprint.route('/result')
 def result():
     return render_template('main/result.html', datas=data)
-
-@main_blueprint.route('/test')
-def test():
-	return render_template('main/test.html')
-
 
 
 @main_blueprint.route('/detail_recipe', methods=['POST','GET'])
