@@ -23,9 +23,7 @@ from sklearn import decomposition, datasets
 class Classifier():
     def __init__(self):
         # preprocession
-        # dataset = pd.read_csv('../clear'
-        #                       'backend/result.csv')
-        dataset = pd.read_csv('result.csv')
+        dataset = pd.read_csv('backend/result.csv')
         dataset = dataset.sort_values(by ='BodyType' )
 
         # split into three dataframes
@@ -92,7 +90,7 @@ class Classifier():
                   loc='center left', bbox_to_anchor=(1.0, .5))
 
         # plt.show()
-        plt.savefig('resutl.png')
+        # plt.savefig('resutl.png')
         img = io.BytesIO()
         plt.savefig(img, format='png')
         img.seek(0)

@@ -27,7 +27,7 @@
 									title="video player"
 									width="100%"
 									height="600px"
-									src="https://www.youtube.com/embed/CaFyZ4uQjBQ"
+									src={{ links }}
 									frameBorder="0"
 									allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
 									allowFullScreen
@@ -46,18 +46,30 @@
 </header>
 <!--end of the event title-->
     <div class="w3-container" style="padding:40px;max-width:1400px;">
-				<div class="w3-col w3-white w3-card w3-display-container" style="padding:15px;margin-left: 15px;margin-top: 25px;height:400px;width:70%">
-						<div class="w3-col w3-container" style="width:50%;font-family:Arial">
-								<h4 style="font-family:Arial"> <i class="fas fa-map-marker-alt w3-text-red"></i> <b>Address:</b></h4> <h5>dasdsadsa</h5><br>
-								<h4 style="font-family:Arial"><i class="fa fa-mobile-phone w3-text-red"></i> <b>Phone Number:</b></h4> <h4>dasdas</h4><br>
-								<h4 style="font-family:Arial"><i class="fas fa-award w3-text-red"></i> <b>Tourist Award:</b></h4> dasdas<br><br>
-								<h4 style="font-family:Arial"><i class="fas fa-bookmark w3-text-red"></i> <b>Rate:</b></h4> <h2 class="w3-text-red w3-opacity-min" style="font-family:Arial"><b>4.5</b></h2><br>
-						</div>
+				<div class="w3-col w3-white w3-card w3-display-container" style="padding:15px;margin-left: 15px;margin-top: 25px;min-height:400px;width:70%">
+						<div class="w3-col w3-container" style="font-family:Arial">
+                            <h4 style="font-family:Arial"> <i class="fas fa-map-marker-alt w3-text-red"></i> <b>Step:</b></h4>
+                            <div class="list-group">
+                            {% for step in steps %}
+                                <a href="#" class="colors list-group-item list-group-item-action">{{ loop.index}}. {{ step }}</a>
+                            {% endfor %}
+                            <script type="text/javascript">
 
-						<div class="w3-container w3-col" style="width:45%;font-family:Arial">
-								<h4><i class="fa fa-clock-o w3-text-red"></i> <b class="w3-opacity-min">Open Hours</b></h4><hr>
-								
-						</div>
+                                ran_col()
+                                function ran_col(){
+                                    var ran_class = [" list-group-item-primary ", 
+                                    " list-group-item-success ", " list-group-item-danger ", " list-group-item-warning ",
+                                    " list-group-item-info "];
+                                    var class_ = ran_class[0];
+                                    tags = document.getElementsByClassName('colors')
+                                    for(var i=0;i<tags.length;i++){
+                                        tags[i].className += ran_class[Math.floor(Math.random() * ran_class.length)]
+                                    }
+                                }
+                            </script>
+                        </div>
+
+                        </div>
 				</div>
 				
 				<div class="w3-col w3-container w3-center" style="width:20%; margin-top:20px">

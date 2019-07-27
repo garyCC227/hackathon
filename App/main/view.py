@@ -12,7 +12,7 @@ import numpy as np
 
 f = Food()
 data = f.generate_recipe_card()
-print(data)
+# print(data)
 model = Classifier()
 
 main_blueprint = Blueprint(
@@ -35,18 +35,28 @@ def detail_recipe():
 	if request.method == 'POST':
 		recipe_name = request.form.get('recipe_name')
 		recipe_id = request.form.get('recipe_id')
-		ids = f.get_video_id(recipe_name)
+		id = f.get_video_id(recipe_name)
 
-		urls = []
-		for id in ids:
-			urls.append("https://www.youtube.com/embed/"+id["youTubeId"])
+
+		video_url = "https://www.youtube.com/embed/"+id
+		# print(video_url)
 		
 		# detail 
 		html_nutri = f.visualize_nutrition(recipe_id)
 		html_ingre = f.visualize_ingredient(recipe_id)
 		html_equip = f.visualize_equipment(recipe_id)
+
+		#step
+		infos = f.get_recipe_instruction(recipe_id)[0]['steps']
+		steps = []
+		for info in infos:
+			# print(info['step'])
+			# break
+			steps.append(info['step'])
 		
-		return render_template('main/recipe.html', links=urls, nutri=html_nutri, ingre=html_ingre, equip=html_equip)
+		# print(len(steps))
+
+		return render_template('main/recipe.html', links=video_url, nutri=html_nutri, ingre=html_ingre, equip=html_equip, steps= steps)
 	
 	return render_template('main/result.html', datas=data)
 
@@ -73,7 +83,15 @@ def submit_survey():
 		BMR = 66+(13.7*weight)+(5*height) - (6.8*age) + BMI * 5 # daily caloriesS
 
 		# model classifier
-		json_labels = getJson(os.path.join(UPLOAD_FOLDER+'/', filename))
+
+		if 'file' in request.files:
+			f = request.files['file']
+			if f and allowed_file(f.filename):
+				filename = secure_filename(f.filename)
+				f.save(os.path.join(UPLOAD_FOLDER+'/',filename))
+			fn = f.filename
+		
+		json_labels = getJson(os.path.join(UPLOAD_FOLDER+'/', fn))
 		selected_labels = toDataFrame(json_labels)
 		# print(selected_labels)
 		labels = []
@@ -83,6 +101,7 @@ def submit_survey():
 		# print(labels)
 		category = model.predict(labels)
 
+	
 		if category == "fat":
 			BMR *= 0.8
 			diet += ", veryhealthy, lowfat, highprotein, lowcarbonhydrate"
@@ -90,11 +109,16 @@ def submit_survey():
 			BMR *= 1.2
 			diet += ", highprotein"
 
-		z = f.generate_meal(BMR, diet)
-		print(z)
+		my_food = Food()
+		my_data = my_food.generate_recipe_card()
 
+		if(gender == 'Choose...'):
+			gender = "Null"
+
+		if diet == 'Choose...':
+			diet = "Null"
 		# print(name, age, weight, gender, diet, height)
-		
+		return render_template('main/result.html', datas=my_data, bmi=int(BMI), bmr=int(BMR), user_input=input, gender=gender, diet=diet)
 	return render_template('main/temp.html')
 
 
@@ -109,7 +133,7 @@ def send_files():
 		
 		# image file image
 		fn = f.filename
-		print(fn)
+		# print(fn)
 		# print(name, age, weight, gender, diet, height)
 		
 	return render_template('main/temp.html')
