@@ -12,6 +12,7 @@ import numpy as np
 
 f = Food()
 data = f.generate_recipe_card()
+print(data)
 model = Classifier()
 
 main_blueprint = Blueprint(
@@ -45,7 +46,7 @@ def detail_recipe():
 		html_ingre = f.visualize_ingredient(recipe_id)
 		html_equip = f.visualize_equipment(recipe_id)
 		
-		return render_template('main/recipe.html', links = urls, nutri=html_nutri, ingre=html_ingre, equip=html_equip)
+		return render_template('main/recipe.html', links=urls, nutri=html_nutri, ingre=html_ingre, equip=html_equip)
 	
 	return render_template('main/result.html', datas=data)
 
@@ -105,9 +106,14 @@ def send_files():
 			if f and allowed_file(f.filename):
 				filename = secure_filename(f.filename)
 				f.save(os.path.join(UPLOAD_FOLDER+'/',filename))
-			else:
-				return "bad"
-	return "successful_upload"
+		
+		# image file image
+		fn = f.filename
+		print(fn)
+		# print(name, age, weight, gender, diet, height)
+		
+	return render_template('main/temp.html')
+
 
 
 def allowed_file(filename):

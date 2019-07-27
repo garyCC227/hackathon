@@ -44,9 +44,9 @@ class Food:
                     },
             headers=HEADER,
         ).data.decode('utf-8'))
+        print(r["videos"][0]["youTubeId"])
+        return r["videos"][0]["youTubeId"]
 
-        return r["videos"]
-    
     """ abstarct method of getting information by id 
     """
     def get_url(self, url):
@@ -113,7 +113,7 @@ class Food:
         for recipe in result:
             id = recipe["id"]
             recipe["description"] = self.summarize_recipe(id)["summary"]
-            recipe["image"] = "https://spoonacular.com/recipeImages/{}-300x150.jpg".format(id)
+            recipe["image"] = "https://spoonacular.com/recipeImages/{}-312x150.jpg".format(id)
             
         return result
 
