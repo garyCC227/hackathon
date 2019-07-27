@@ -118,10 +118,40 @@ class Food:
             
         return result
 
-    def visualize_nutrition(self, recipeID):
+    def visualize_ingredient(self, recipeID):
         r = self.http_.request(
             'GET',
             "https://api.spoonacular.com/recipes/{}/ingredientWidget".format(recipeID),
+            fields={'defaultCss': "true",
+                    },
+            headers={
+                "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+                "X-RapidAPI-Key": "56d77e19b7mshca1482175a5bf43p15b63djsn0ca1fbbea757",
+                "Accept": "text/html"
+            }
+        ).data.decode('utf-8')
+
+        return r
+    
+    def visualize_equipment(self, recipeID):
+        r = self.http_.request(
+            'GET',
+            "https://api.spoonacular.com/recipes/{}/equipmentWidget".format(recipeID),
+            fields={'defaultCss': "true",
+                    },
+            headers={
+                "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+                "X-RapidAPI-Key": "56d77e19b7mshca1482175a5bf43p15b63djsn0ca1fbbea757",
+                "Accept": "text/html"
+            }
+        ).data.decode('utf-8')
+
+        return r
+    
+    def visualize_nutrition(self, recipeID):
+        r = self.http_.request(
+            'GET',
+            "https://api.spoonacular.com/recipes/{}/nutritionWidget".format(recipeID),
             fields={'defaultCss': "true",
                     },
             headers={
