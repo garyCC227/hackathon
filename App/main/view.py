@@ -1,8 +1,11 @@
 from flask import render_template, Blueprint,redirect,request,flash
 from werkzeug import secure_filename
 import os
-from App import app
 
+from App.api.foodAPI import Food
+
+f = Food()
+f.generate_meal()
 
 main_blueprint = Blueprint(
     'main',
@@ -15,13 +18,17 @@ UPLOAD_FOLDER = './App/main/static/uploads'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 
+
+
 @main_blueprint.route('/result')
 def result():
     return render_template('main/video.html')
 
+
 @main_blueprint.route('/detail_recipe')
 def detail_recipe():
     return render_template('main/recipe.html')
+
 
 @main_blueprint.route('/')
 def index():
@@ -31,6 +38,7 @@ def index():
 @main_blueprint.route('/temp')
 def temp():
 	return render_template('main/temp.html')
+
 
 @main_blueprint.route('/submit_survey', methods=['POST','GET'])
 def submit_survey():
@@ -48,6 +56,7 @@ def submit_survey():
 		
 	return render_template('main/temp.html')
 
+
 @main_blueprint.route('/upload', methods=["POST"])
 def send_files():
 	if request.method == 'POST':
@@ -58,8 +67,8 @@ def send_files():
 				f.save(os.path.join(UPLOAD_FOLDER+'/',filename))
 			else:
 				return "bad"
-  
 	return "successful_upload"
+
 
 def allowed_file(filename):
     return '.' in filename and \
