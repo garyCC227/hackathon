@@ -72,6 +72,7 @@ def submit_survey():
 		diet = input.get('diet')
 		height = int(input.get('height'))
 
+		
 		# calculate the target calories
 		BMI = weight/((height/100)**2)
 		BMR = 66+(13.7*weight)+(5*height) - (6.8*age) + BMI * 5 # daily caloriesS
@@ -95,7 +96,7 @@ def submit_survey():
 		# print(labels)
 		category = model.predict(labels)
 
-	
+		my_diet = diet
 		if category == "fat":
 			BMR *= 0.8
 			diet += ", veryhealthy, lowfat, highprotein, lowcarbonhydrate"
@@ -106,12 +107,14 @@ def submit_survey():
 		my_food = Food()
 		my_data = my_food.generate_recipe_card()
 		
+		
+		# print(diet.split(','))
 		#get image
 		# print(labels)
 		url_src = model.getPlot(labels)
 
 		# print(name, age, weight, gender, diet, height)
-		return render_template('main/result.html', datas=my_data, bmi=int(BMI), bmr=int(BMR), user_input=input, gender=gender, diet=diet, img_src = url_src)
+		return render_template('main/result.html', datas=my_data, bmi=int(BMI), bmr=int(BMR), user_input=input, gender=gender, diet=my_diet, img_src = url_src)
 	return render_template('main/temp.html')
 
 
