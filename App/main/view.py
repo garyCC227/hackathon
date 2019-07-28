@@ -3,10 +3,9 @@ from werkzeug import secure_filename
 import os
 from App.api.foodAPI import Food
 from App.implement import *
-
 from backend.google_vision import getJson
 from backend.analyze import toDataFrame
-from backend.classification import Classifier
+from backend.classification import *
 import sys
 import numpy as np
 
@@ -24,11 +23,6 @@ main_blueprint = Blueprint(
 
 UPLOAD_FOLDER = './App/main/static/uploads'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
-
-@main_blueprint.route('/result')
-def result():
-    return render_template('main/result.html', datas=data) 
-
 
 @main_blueprint.route('/detail_recipe', methods=['POST','GET'])
 def detail_recipe():
@@ -56,7 +50,7 @@ def detail_recipe():
 		
 		# print(len(steps))
 
-		return render_template('main/recipe.html', links=video_url, nutri=html_nutri, ingre=html_ingre, equip=html_equip, steps= steps)
+		return render_template('main/recipe.html', links=video_url, nutri=html_nutri, ingre=html_ingre, equip=html_equip, steps= steps, recipe_name=recipe_name)
 	
 	return render_template('main/result.html', datas=data)
 
@@ -111,14 +105,13 @@ def submit_survey():
 
 		my_food = Food()
 		my_data = my_food.generate_recipe_card()
+		
+		#get image
+		# print(labels)
+		url_src = model.getPlot(labels)
 
-		if(gender == 'Choose...'):
-			gender = "Null"
-
-		if diet == 'Choose...':
-			diet = "Null"
 		# print(name, age, weight, gender, diet, height)
-		return render_template('main/result.html', datas=my_data, bmi=int(BMI), bmr=int(BMR), user_input=input, gender=gender, diet=diet)
+		return render_template('main/result.html', datas=my_data, bmi=int(BMI), bmr=int(BMR), user_input=input, gender=gender, diet=diet, img_src = url_src)
 	return render_template('main/temp.html')
 
 

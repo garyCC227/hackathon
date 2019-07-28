@@ -45,7 +45,7 @@ class Classifier():
         self.classifier.fit(X, y)
 
     def getPlot(self, data):
-        dataset = pd.read_csv('plotData.csv')
+        dataset = pd.read_csv('backend/plotData.csv')
         dataset = dataset.sort_values(by ='BodyType' )
 
         # split into three dataframes
