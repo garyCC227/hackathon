@@ -95,7 +95,7 @@ def submit_survey():
 		# print(labels)
 		category = model.predict(labels)
 
-	
+		my_diet = diet
 		if category == "fat":
 			BMR *= 0.8
 			diet += ", veryhealthy, lowfat, highprotein, lowcarbonhydrate"
@@ -104,14 +104,14 @@ def submit_survey():
 			diet += ", highprotein"
 
 		my_food = Food()
-		my_data = my_food.generate_recipe_card()
+		my_data = my_food.generate_recipe_card(BMR, diet)
 		
 		#get image
 		# print(labels)
 		url_src = model.getPlot(labels)
 
 		# print(name, age, weight, gender, diet, height)
-		return render_template('main/result.html', datas=my_data, bmi=int(BMI), bmr=int(BMR), user_input=input, gender=gender, diet=diet, img_src = url_src)
+		return render_template('main/result.html', datas=my_data, bmi=int(BMI), bmr=int(BMR), user_input=input, gender=gender, my_diet=my_diet, img_src = url_src)
 	return render_template('main/temp.html')
 
 

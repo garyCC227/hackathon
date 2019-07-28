@@ -119,8 +119,8 @@ class Food:
         :recipeID: recipeID: int
         :type return: list{general nutrition: str, good: list, bad: list}  
     """
-    def generate_recipe_card(self):
-        result = self.generate_meal()["meals"]
+    def generate_recipe_card(self, cal=2000, diet=None):
+        result = self.generate_meal(targetCalories=cal, diet=diet)["meals"]
         # add descriptoin and change image 
         for recipe in result:
             id = recipe["id"]
